@@ -5,17 +5,20 @@ from pycoral.adapters import classify
 from pycoral.utils.edgetpu import make_interpreter
 from pycoral.utils.dataset import read_label_file
 
-script_dir = path(__file__).parent.resolve()
+script_dir = Path(__file__).parent.resolve()
 
-model_file = script_dir/'models/AstroPi-model-v1.tflite'
+model_file = script_dir/'models/astropi_model_v1.tflite'
 data_dir = script_dir/'data'
-label_file = data_dir/'models/AstroPi-model-v1.txt'
-image_file = data_dir/'tests'/''
+label_file = data_dir/'astropi_model_v1.txt'
+image_file = data_dir/'tests'/'twilight_1.jpg'
 
 interpreter = make_interpreter(f"{model_file}")
 interpreter.allocate_tensors()
 
-commom.set_input(interpreter, image)
+size = common.input_size(interpreter)
+image = Image.open(image_file).convert('RGB').resize(size, Image.ANTIALIAS)
+
+common.set_input(interpreter, image)
 interpreter.invoke()
 classes = classify.get_classes(interpreter, top_k=1)
 
