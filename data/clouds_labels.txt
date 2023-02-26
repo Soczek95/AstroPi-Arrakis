@@ -1,0 +1,2 @@
+0 clouds
+1 no-clouds

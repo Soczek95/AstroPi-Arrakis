@@ -1,0 +1,3 @@
+0 Night
+1 Day
+2 Twilight
