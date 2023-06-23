@@ -1,0 +1,7 @@
+0 cirrus
+1 cumulus
+2 altocumulus_or_stratocumulus
+3 contrails
+4 cumulonimbus
+5 haze_or_fog
+6 ice_clouds
